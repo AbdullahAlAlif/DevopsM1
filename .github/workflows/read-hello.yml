@@ -1,0 +1,22 @@
+name: Read hello.txt
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  read_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Read and output file content
+        run: |
+          if [[ -f hello.txt ]]; then
+            cat hello.txt
+          else
+            echo "hello.txt not found."
+          fi
